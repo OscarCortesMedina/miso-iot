@@ -1,6 +1,6 @@
 set ant 999
 set ite 0
-battery set 10
+battery set 100
 atget id id
 getpos2 lonSen latSen
 set sensorDescarga 0
@@ -38,13 +38,13 @@ areadsensor tempSen
 rdata tempSen SensTipo idSens temp
 
 if( temp>30)
-   data mens "alerta" lonSen latSen 
+   data mens "alerta" lonSen latSen ite 
    inc ite
    print ite
    wait 10
    send mens ant
    if (ite >= 1000)
-        data mens "maxMen" lonSen latSen  
+        data mens "maxMen" lonSen latSen ite  
 	send mens ant
         stop
    end
@@ -55,6 +55,6 @@ end
 
 battery bat
 if( bat<5 ) 
-	data mens "critico" lonSen latSen 
+	data mens "critico" lonSen latSen ite 
 	send mens ant
 end

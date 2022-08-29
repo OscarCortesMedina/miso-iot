@@ -1,17 +1,19 @@
 atget id id
-set stop 0
+set iteracion 0
 data p "start" id id
 send p
 cprint "Iniciado" 
 loop
 read mens
-rdata mens tipo valor1 valor2 
+rdata mens tipo valor1 valor2 valor3 
 if(tipo == "alerta")
-   cprint "Alerta en: longitud" valor1 ", latitud: " valor2 ", iteración: " valor3
+   inc iteracion
+   cprint "Alerta en: longitud" valor1 ", latitud: " valor2 ", iteracion: " iteracion
+   
 end
 
 if(tipo == "critico")
-	cprint "Nodo descargado en: longitud" valor1 ", latitud: " valor2 ", iteración: " valor3
+	cprint "Nodo descargado en: longitud" valor1 ", latitud: " valor2 ", iteracion: " iteracion
 	data p "stop"	
 	send p
 	wait 1000
@@ -20,10 +22,10 @@ if(tipo == "critico")
 end
 
 if(tipo == "maxMen")
-	cprint "Nodo alcanzo max mensajes en: longitud" valor1 ", latitud: " valor2
+	cprint "Nodo alcanzo max mensajes en: longitud" valor1 ", latitud: " valor2 ", iteracion: " iteracion
 	data p "stop"	
 	send p
-	wait 100
+	wait 1000
 	stop
 
 end

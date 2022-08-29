@@ -209,7 +209,7 @@ void loop()
     //Publica en el tópico de la temperatura
     client.publish(MQTT_PUB_TOPIC2, payload2, false);
     //Publica en el tópico de la luminosidad
-    client.publish(MQTT_PUB_TOPIC3, payload2, false);
+    client.publish(MQTT_PUB_TOPIC3, payload3, false);
   }
 
   //Imprime en el monitor serial la información recolectada
